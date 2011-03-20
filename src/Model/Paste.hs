@@ -31,4 +31,4 @@ fromDocList :: (Regular a, FromDoc (PF a)) => [Document] -> [a]
 fromDocList = map fromJust . filter isJust . map fromDoc
 
 getRecentPastes :: (MonadMongoDB m, DbAccess m) => m [Paste]
-getRecentPastes = liftM fromDocList (rest =<< (withDB' $ find (select [] "team")))
+getRecentPastes = liftM fromDocList (rest =<< (withDB' $ find (select [] "pastes")))
