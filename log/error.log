@@ -1,0 +1,6 @@
+[18/Mar/2011:16:25:37 +0100] Server.httpServe: START (EventLoopSimple)
+[18/Mar/2011:16:35:12 +0100] Server.httpServe: SHUTDOWN
+[18/Mar/2011:16:35:12 +0100] Server.httpServe: BACKEND STOPPED
+[18/Mar/2011:17:12:23 +0100] Server.httpServe: START (EventLoopSimple)
+[18/Mar/2011:17:24:56 +0100] Server.httpServe: SHUTDOWN
+[18/Mar/2011:17:24:56 +0100] Server.httpServe: BACKEND STOPPED
