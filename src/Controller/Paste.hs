@@ -5,6 +5,8 @@ module Controller.Paste
 ) where
     
 import qualified Data.Text    as T
+import qualified Text.XmlHtml as X
+import           Control.Monad.Trans
 
 import           Text.Templating.Heist
 
@@ -13,14 +15,13 @@ import           Model.Paste
 
 
 pasteParts :: Paste -> [(T.Text, T.Text)]
-pasteParts paste = map applyAndPack [ ("title", pasteTitle)
-                                    , ("content", pasteContent)
-                                    , ("description", pasteDescription)
-                                    , ("language", pasteLanguage) ]
-    where applyAndPack (x, f) = (T.pack x, T.pack $ f paste)
+pasteParts p = map applyAndPack [ ("title", pasteTitle)
+                                , ("content", pasteContent)
+                                , ("description", pasteDescription)
+                                , ("language", pasteLanguage) ]
+    where applyAndPack (x, f) = (T.pack x, T.pack $ f p)
 
--- recentPastesSplice :: Splice Application
-recentPastesSplice :: (Monad m, DbAccess (TemplateMonad m), MonadMongoDB (TemplateMonad m)) => Splice m
+recentPastesSplice :: Splice Application
 recentPastesSplice = do
-    pastes <- getRecentPastes
-    mapSplices (runChildrenWithText . pasteParts) pastes
+     ps <- lift getRecentPastes
+     mapSplices (runChildrenWithText . pasteParts) ps

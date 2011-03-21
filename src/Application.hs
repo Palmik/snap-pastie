@@ -48,7 +48,7 @@ instance HasTimerState ApplicationState where
     getTimerState     = timerState
     setTimerState s a = a { timerState = s }
 
-------------------------------------------------------------------------------    
+------------------------------------------------------------------------------
 instance HasMongoDBState ApplicationState where
     getMongoDBState     = databaseState
     setMongoDBState s a = a { databaseState = s }
@@ -63,5 +63,5 @@ applicationInitializer :: Initializer ApplicationState
 applicationInitializer = do
     heist <- heistInitializer "resources/templates"
     timer <- timerInitializer
-    database <- mongoDBInitializer (Host "127.0.0.1" $ PortNumber 1234) 1 "pastie"
+    database <- mongoDBInitializer (Host "127.0.0.1" $ PortNumber 27017) 1 "pastie"
     return $ ApplicationState heist timer database

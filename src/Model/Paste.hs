@@ -2,20 +2,21 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE EmptyDataDecls #-}
 {-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE FlexibleContexts #-}
 
 module Model.Paste
 ( Paste(..)
+, paste
 , getRecentPastes
-, DbAccess
-, MonadMongoDB
+, pastesTable
 ) where
 
 import           Control.Monad (liftM)
-import           Data.Maybe
 
 import           Snap.Extension.DB.MongoDB
 import           Snap.Extension.DB.MongoDB.Generics
+
+import           Application
+import           Model.Utils
 
 data Paste = Paste { pasteID :: RecKey
                    , pasteTitle :: String
@@ -23,12 +24,16 @@ data Paste = Paste { pasteID :: RecKey
                    , pasteDescription :: String
                    , pasteLanguage :: String
                    } deriving (Eq, Show)
-                   
+
 $(deriveAll ''Paste "PFPaste")
 type instance PF Paste = PFPaste
 
-fromDocList :: (Regular a, FromDoc (PF a)) => [Document] -> [a]
-fromDocList = map fromJust . filter isJust . map fromDoc
+pastesTable :: String
+pastesTable = "pastes"
 
-getRecentPastes :: (MonadMongoDB m, DbAccess m) => m [Paste]
-getRecentPastes = liftM fromDocList (rest =<< (withDB' $ find (select [] "pastes")))
+paste :: String -> String -> String -> String -> Paste
+paste t c d l = Paste (RecKey Nothing) t c d l
+
+getRecentPastes :: Application [Paste]
+getRecentPastes = liftM fromDocList $ withDB' $ rest =<< (find (select [] "pastes"))
+
