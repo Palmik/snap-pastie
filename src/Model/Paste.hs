@@ -17,6 +17,8 @@ import           Data.Maybe
 import           Snap.Extension.DB.MongoDB
 import           Snap.Extension.DB.MongoDB.Generics
 
+import           Application
+
 data Paste = Paste { pasteID :: RecKey
                    , pasteTitle :: String
                    , pasteContent :: String
@@ -30,5 +32,6 @@ type instance PF Paste = PFPaste
 fromDocList :: (Regular a, FromDoc (PF a)) => [Document] -> [a]
 fromDocList = map fromJust . filter isJust . map fromDoc
 
-getRecentPastes :: (MonadMongoDB m, DbAccess m) => m [Paste]
+-- getRecentPastes :: (MonadMongoDB m, DbAccess m) => m [Paste]
+getRecentPastes :: Application [Paste]
 getRecentPastes = liftM fromDocList (rest =<< (withDB' $ find (select [] "pastes")))

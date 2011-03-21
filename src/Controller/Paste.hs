@@ -19,8 +19,8 @@ pasteParts paste = map applyAndPack [ ("title", pasteTitle)
                                     , ("language", pasteLanguage) ]
     where applyAndPack (x, f) = (T.pack x, T.pack $ f paste)
 
--- recentPastesSplice :: Splice Application
-recentPastesSplice :: (Monad m, DbAccess (TemplateMonad m), MonadMongoDB (TemplateMonad m)) => Splice m
+-- recentPastesSplice :: (Monad m, DbAccess (TemplateMonad m), MonadMongoDB (TemplateMonad m)) => Splice m
+recentPastesSplice :: Splice Application
 recentPastesSplice = do
     pastes <- getRecentPastes
     mapSplices (runChildrenWithText . pasteParts) pastes
