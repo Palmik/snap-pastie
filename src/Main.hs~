@@ -39,7 +39,9 @@ change.
 
 -}
 
-module Main where
+module Main
+( main
+) where
 
 #ifdef DEVELOPMENT
 import           Snap.Extension.Loader.Devel

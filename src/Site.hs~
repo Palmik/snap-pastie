@@ -52,7 +52,7 @@ echo = do
 ------------------------------------------------------------------------------
 -- | Render recent pastes
 pastes :: Application ()
-pastes = ifTop $ heistLocal (bindSplices pastesSplices) $ render "pastes"
+echo = ifTop $ heistLocal (bindSplices pastesSplices) $ render "pastes"
     where
       pastesSplices =
           [ ("recent-pastes", recentPastesSplice)
