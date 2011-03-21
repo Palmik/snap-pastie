@@ -30,8 +30,7 @@ $(deriveAll ''Paste "PFPaste")
 type instance PF Paste = PFPaste
 
 fromDocList :: (Regular a, FromDoc (PF a)) => [Document] -> [a]
-fromDocList = map fromJust . filter isJust . map fromDoc
+fromDocList = catMaybes . map fromDoc
 
--- getRecentPastes :: (MonadMongoDB m, DbAccess m) => m [Paste]
 getRecentPastes :: Application [Paste]
-getRecentPastes = liftM fromDocList (rest =<< (withDB' $ find (select [] "pastes")))
+getRecentPastes = liftM fromDocList (withDB' $ rest =<< (find (select [] "pastes")))

@@ -5,6 +5,7 @@ module Controller.Paste
 ) where
     
 import qualified Data.Text    as T
+import           Control.Monad.Trans
 
 import           Text.Templating.Heist
 
@@ -19,8 +20,7 @@ pasteParts paste = map applyAndPack [ ("title", pasteTitle)
                                     , ("language", pasteLanguage) ]
     where applyAndPack (x, f) = (T.pack x, T.pack $ f paste)
 
--- recentPastesSplice :: (Monad m, DbAccess (TemplateMonad m), MonadMongoDB (TemplateMonad m)) => Splice m
 recentPastesSplice :: Splice Application
 recentPastesSplice = do
-    pastes <- getRecentPastes
+    pastes <- lift getRecentPastes
     mapSplices (runChildrenWithText . pasteParts) pastes
