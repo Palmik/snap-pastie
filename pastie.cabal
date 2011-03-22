@@ -1,5 +1,5 @@
 Name:                pastie
-Version:             0.1
+Version:             0.2
 Synopsis:            Project Synopsis Here
 Description:         Project Description Here
 License:             AllRightsReserved
@@ -33,6 +33,10 @@ Executable pastie
     snap-extension-mongodb,
     bson,
     compact-string-fix,
+    digestive-functors,
+    digestive-functors-snap,
+    digestive-functors-blaze,
+    blaze-html > 0.3 && < 0.5,
     mongoDB
 
   extensions: TypeSynonymInstances MultiParamTypeClasses

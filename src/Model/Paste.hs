@@ -9,6 +9,7 @@ module Model.Paste
 , getRecentPastes
 , getRecentPastesDummy
 , pastesTable
+, insertPaste
 ) where
 
 import           Control.Monad (liftM)
@@ -42,3 +43,6 @@ getRecentPastesDummy :: Application [Paste]
 getRecentPastesDummy = return $ map (\ n -> paste ("Title " ++ show n) (content ++ ' ':show n) (description ++ ' ':show n) "cpp") [1..15]
     where content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           description = "In et felis nulla. Vivamus vitae feugiat nulla."
+
+insertPaste :: Paste -> Application ()
+insertPaste p = withDB' $ insertADT_ "pastes" p
