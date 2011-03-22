@@ -16,12 +16,12 @@ import           Model.Paste
 
 pasteParts :: Paste -> [(T.Text, T.Text)]
 pasteParts p = map applyAndPack [ ("title", pasteTitle)
-                                , ("content", pasteContent)
+                                , ("code", pasteCode)
                                 , ("description", pasteDescription)
                                 , ("language", pasteLanguage) ]
     where applyAndPack (x, f) = (T.pack x, T.pack $ f p)
 
 recentPastesSplice :: Splice Application
 recentPastesSplice = do
-     ps <- lift getRecentPastes
+     ps <- lift getRecentPastesDummy
      mapSplices (runChildrenWithText . pasteParts) ps

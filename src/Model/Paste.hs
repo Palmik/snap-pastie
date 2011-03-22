@@ -7,6 +7,7 @@ module Model.Paste
 ( Paste(..)
 , paste
 , getRecentPastes
+, getRecentPastesDummy
 , pastesTable
 ) where
 
@@ -20,7 +21,7 @@ import           Model.Utils
 
 data Paste = Paste { pasteID :: RecKey
                    , pasteTitle :: String
-                   , pasteContent :: String
+                   , pasteCode :: String
                    , pasteDescription :: String
                    , pasteLanguage :: String
                    } deriving (Eq, Show)
@@ -37,3 +38,7 @@ paste t c d l = Paste (RecKey Nothing) t c d l
 getRecentPastes :: Application [Paste]
 getRecentPastes = liftM fromDocList $ withDB' $ rest =<< (find (select [] "pastes"))
 
+getRecentPastesDummy :: Application [Paste]
+getRecentPastesDummy = return $ map (\ n -> paste ("Title " ++ show n) (content ++ ' ':show n) (description ++ ' ':show n) "cpp") [1..15]
+    where content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          description = "In et felis nulla. Vivamus vitae feugiat nulla."

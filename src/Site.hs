@@ -61,8 +61,6 @@ pastes = ifTop $ heistLocal (bindSplices pastesSplices) $ render "pastes"
 ------------------------------------------------------------------------------
 -- | The main entry point handler.
 site :: Application ()
-site = route [ ("/",            index)
-             , ("/echo/:stuff", echo)
-             , ("/pastes",      pastes)
+site = route [ ("/",      pastes)
              ]
        <|> serveDirectory "resources/static"
