@@ -56,6 +56,7 @@ pastes = ifTop $ heistLocal (bindSplices pastesSplices) $ render "pastes"
     where
       pastesSplices =
           [ ("recent-pastes", recentPastesSplice)
+          , ("highlight",     highlightAsSplice)
           ]
 
 ------------------------------------------------------------------------------
