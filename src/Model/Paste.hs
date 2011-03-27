@@ -37,7 +37,7 @@ paste :: String -> String -> String -> String -> Paste
 paste t c d l = Paste (RecKey Nothing) t c d l
 
 getRecentPastes :: Application [Paste]
-getRecentPastes = liftM fromDocList $ withDB' $ rest =<< (find (select [] "pastes"))
+getRecentPastes = liftM fromDocList $ withDB' $ rest =<< (find (select [] "pastes") {sort = ["$natural" =: (-1 :: Int)]})
 
 getRecentPastesDummy :: Application [Paste]
 getRecentPastesDummy = return $ map (\ n -> paste ("Title " ++ show n) (content ++ ' ':show n) (description ++ ' ':show n) "cpp") [1..15]
