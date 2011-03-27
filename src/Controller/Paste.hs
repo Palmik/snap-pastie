@@ -8,6 +8,7 @@ module Controller.Paste
 ) where
     
 import qualified Data.Text    as T
+import           Data.Text (Text)
 import qualified Data.Text.Encoding as T (decodeUtf8)
 import qualified Text.XmlHtml as X
 import           Control.Monad.Trans
@@ -29,7 +30,7 @@ pasteParts p = map applyAndPack [ ("title", pasteTitle)
                                 , ("code", pasteCode)
                                 , ("description", pasteDescription)
                                 , ("language", pasteLanguage) ]
-    where applyAndPack (x, f) = (T.pack x, T.pack $ f p)
+    where applyAndPack (x, f) = (x, f p)
 
 recentPastesSplice :: Splice Application
 recentPastesSplice = do
@@ -38,11 +39,11 @@ recentPastesSplice = do
 
 addPasteHandler :: Application ()
 addPasteHandler = do
-    t <- getParam "title" >>= maybe (redirect "/") (return . T.unpack . T.decodeUtf8)
-    c <- getParam "code" >>= maybe (redirect "/") (return . T.unpack . T.decodeUtf8)
-    d <- getParam "description" >>= maybe (redirect "/") (return . T.unpack . T.decodeUtf8)
+    t <- getParam "title" >>= maybe (redirect "/") (return . T.decodeUtf8)
+    c <- getParam "code" >>= maybe (redirect "/") (return . T.decodeUtf8)
+    d <- getParam "description" >>= maybe (redirect "/") (return . T.decodeUtf8)
     l <- return "cpp"
-    if (not $ any null [t, c, d, l]) then insertPaste $ paste t c d l else return ()
+    if (not $ any T.null [t, c, d, l]) then insertPaste $ paste t c d l else return ()
     redirect "/"
 
          
