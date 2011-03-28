@@ -30,12 +30,17 @@ pastes = ifTop $ heistLocal (bindSplices pastesSplices) $ render "pastes"
     where
       pastesSplices =
           [ ("recent-pastes", recentPastesSplice)
+          , ("possible-languages", possibleLanguagesSplice)
           ]
+
+------------------------------------------------------------------------------
+-- | Render single paste
 
 ------------------------------------------------------------------------------
 -- | The main entry point handler.
 site :: Application ()
-site = route [ ("/",      methods [GET, HEAD] pastes)
-             , ("/",      method  POST        addPasteHandler)
+site = route [ ("/",          methods [GET, HEAD] pastes)
+             , ("/",          method  POST        addPasteHandler)
+             --, ("/paste/:pid"                     singlePaste)
              ]
        <|> serveDirectory "resources/static"

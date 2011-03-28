@@ -10,6 +10,9 @@ module Model.Utils
 
 import           Control.Monad (liftM)
 import           Data.Maybe
+import qualified Data.Text.Encoding as T (decodeUtf8)
+import qualified Data.Text as T
+import           Data.Text (Text)
 
 import           Snap.Extension.DB.MongoDB
 import           Snap.Extension.DB.MongoDB.Generics
@@ -28,4 +31,8 @@ insertManyADT c = insertMany c . map toDoc
 
 insertManyADT_ :: (Regular a, ToDoc (PF a), DbAccess m) => Collection -> [a] -> m ()
 insertManyADT_ c adts = insertManyADT c adts >> return ()
+
+-- recKeyToText :: RecKey -> Maybe Text
+-- recKeyToText (RecKey (Just x))  = Just (T.decodeUtf8 x)
+-- recKeyToText (RecKey (Nothing)) = Nothing
 

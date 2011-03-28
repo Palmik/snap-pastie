@@ -1,9 +1,12 @@
 <div class="full-paste">
     <h3><title/></h3>
-    <div class="code">
-        <code/>
-    </div>
+    <pre class="$(language)">
+        <code>
+<source-code/>
+        </code>
+    </pre>
     <div class="description">
         <description/>
     </div>
+    <span><language/></span>
 </div>

@@ -7,9 +7,11 @@ module Model.Paste
 ( Paste(..)
 , paste
 , getRecentPastes
-, getRecentPastesDummy
+, getPaste
 , pastesTable
 , insertPaste
+
+, ObjectId
 ) where
 
 import           Control.Monad (liftM)
@@ -41,10 +43,8 @@ paste t c d l = Paste (RecKey Nothing) t c d l
 getRecentPastes :: Application [Paste]
 getRecentPastes = liftM fromDocList $ withDB' $ rest =<< (find (select [] "pastes") {sort = ["$natural" =: (-1 :: Int)]})
 
-getRecentPastesDummy :: Application [Paste]
-getRecentPastesDummy = return $ map (\ n -> paste (T.pack $ "Title " ++ show n) (T.pack $ content ++ ' ':show n) (T.pack $ description ++ ' ':show n) "cpp") [1..15]
-    where content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          description = "In et felis nulla. Vivamus vitae feugiat nulla."
+getPaste :: ObjectId -> Application (Maybe Paste)
+getPaste pid = liftM (maybe Nothing fromDoc) $ withDB' $ findOne (select ["_id" =: pid] "pastes")
 
 insertPaste :: Paste -> Application ()
 insertPaste p = withDB' $ insertADT_ pastesTable p
