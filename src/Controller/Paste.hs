@@ -28,16 +28,14 @@ import           Model.Paste
 
 
 languageParts :: (Text, Text) -> [(Text, Text)]
-languageParts (n, v) = [ ("lang-name", n), ("lang-value", v) ]
+languageParts (n, v) = [("lang-name", n), ("lang-value", v)]
 
 possibleLanguages :: [(Text, Text)]
-possibleLanguages = [ ("C++", "cpp")
+possibleLanguages = [ ("C++",     "cpp")
                     , ("Haskell", "hs") ]
 
 possibleLanguagesSplice :: Splice Application
-possibleLanguagesSplice = do
-    pl <- return possibleLanguages
-    mapSplices (runChildrenWithText . languageParts) pl
+possibleLanguagesSplice = mapSplices (runChildrenWithText . languageParts) possibleLanguages
 
 pasteParts :: Paste -> [(Text, Text)]
 pasteParts p = map applyAndPack [ ("title", pasteTitle)
@@ -52,6 +50,7 @@ singlePasteSplice pid = do
     case mp of
          Nothing -> (return . (:[]) . X.TextNode) "404"
          Just  p -> runChildrenWithText $ pasteParts p
+
     
 
 recentPastesSplice :: Splice Application

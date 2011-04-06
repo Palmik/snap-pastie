@@ -3,11 +3,7 @@
     <title>Echo Page</title>
   </head>
   <body>
-    <apply template="add-paste-form">
-        <bind tag="possible-languages">
-            <possible-languages/>
-        </bind>
-    </apply>
+    <apply template="add-paste-form"/>
     <div id="recent-pastes">
         <recent-pastes>
             <apply template="full-paste">
@@ -18,8 +14,5 @@
             </apply>
         </recent-pastes>
     </div>
-    <possible-languages>
-        <option value="$(lang-value)"><lang-name/></option>
-    </possible-languages>
   </body>
 </html>

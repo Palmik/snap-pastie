@@ -12,8 +12,13 @@ module Site
 ) where
 
 import           Control.Applicative
+import           Control.Monad
+import           Debug.Trace
+import           Control.Monad.Trans
 import           Data.Maybe
 import qualified Data.Text.Encoding as T
+
+import           Snap.Extension.DB.MongoDB (bs2objid)
 import           Snap.Extension.Heist
 import           Snap.Extension.Timer
 import           Snap.Util.FileServe
@@ -35,12 +40,21 @@ pastes = ifTop $ heistLocal (bindSplices pastesSplices) $ render "pastes"
 
 ------------------------------------------------------------------------------
 -- | Render single paste
-
+paste :: Application ()
+paste = do
+    oid <- liftM bs2objid $ decodedParam "oid"    
+    let pasteSplices = [ ("single-paste",       singlePasteSplice oid)
+                       , ("possible-languages", possibleLanguagesSplice)
+                       ]
+    ifTop $ heistLocal (bindSplices pasteSplices) $ render "paste"
+    where
+      decodedParam p = fromMaybe "" <$> getParam p
+    
 ------------------------------------------------------------------------------
 -- | The main entry point handler.
 site :: Application ()
 site = route [ ("/",          methods [GET, HEAD] pastes)
              , ("/",          method  POST        addPasteHandler)
-             --, ("/paste/:pid"                     singlePaste)
+             , ("/paste/:oid",                    paste)
              ]
        <|> serveDirectory "resources/static"
