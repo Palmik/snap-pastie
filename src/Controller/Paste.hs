@@ -44,13 +44,13 @@ pasteParts p = map applyAndPack [ ("title", pasteTitle)
                                 , ("language", pasteLanguage) ]
     where applyAndPack (x, f) = (x, f p)
 
-singlePasteSplice :: ObjectId -> Splice Application
-singlePasteSplice pid = do
+singlePasteSplice :: Maybe ObjectId -> Splice Application
+singlePasteSplice Nothing    = (return . (:[]) . X.TextNode) "404"
+singlePasteSplice (Just pid) = do
     mp <- lift $ getPaste pid
     case mp of
          Nothing -> (return . (:[]) . X.TextNode) "404"
          Just  p -> runChildrenWithText $ pasteParts p
-
     
 
 recentPastesSplice :: Splice Application

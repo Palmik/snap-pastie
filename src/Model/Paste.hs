@@ -14,9 +14,12 @@ module Model.Paste
 , ObjectId
 ) where
 
-import           Control.Monad (liftM)
+import           Data.Either
+import           Control.Monad
+import           Control.Monad.IO.Class
 import qualified Data.Text as T
 import           Data.Text (Text)
+import           Debug.Trace
 
 import           Snap.Extension.DB.MongoDB
 import           Snap.Extension.DB.MongoDB.Generics
@@ -41,10 +44,14 @@ paste :: Text -> Text -> Text -> Text -> Paste
 paste t c d l = Paste (RecKey Nothing) t c d l
 
 getRecentPastes :: Application [Paste]
-getRecentPastes = liftM fromDocList $ withDB' $ rest =<< (find (select [] "pastes") {sort = ["$natural" =: (-1 :: Int)]})
+getRecentPastes = do
+    res <- withDB $ rest =<< (find (select [] "pastes") {sort = ["$natural" =: (-1 :: Int)]})
+    return $ either (const []) (fromDocList) res
 
 getPaste :: ObjectId -> Application (Maybe Paste)
-getPaste pid = liftM (maybe Nothing fromDoc) $ withDB' $ findOne (select ["_id" =: pid] "pastes")
+getPaste pid = do
+    res <- withDB $ findOne (select ["_id" =: pid] "pastes")
+    return $ either (const Nothing) (maybe Nothing fromDoc) res
 
 insertPaste :: Paste -> Application ()
 insertPaste p = withDB' $ insertADT_ pastesTable p
