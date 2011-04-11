@@ -178,3 +178,34 @@
 [10/Apr/2011:21:56:28 +0200] Server.httpServe: SHUTDOWN
 [10/Apr/2011:21:56:28 +0200] Server.httpServe: BACKEND STOPPED
 [10/Apr/2011:21:56:29 +0200] Server.httpServe: START (EventLoopSimple)
+[10/Apr/2011:22:15:48 +0200] Server.httpServe: SHUTDOWN
+[10/Apr/2011:22:15:48 +0200] Server.httpServe: BACKEND STOPPED
+[10/Apr/2011:22:15:49 +0200] Server.httpServe: START (EventLoopSimple)
+[10/Apr/2011:22:17:59 +0200] Server.httpServe: SHUTDOWN
+[10/Apr/2011:22:17:59 +0200] Server.httpServe: BACKEND STOPPED
+[10/Apr/2011:22:17:59 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:13:21:36 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:13:23:28 +0200] Server.httpServe: SHUTDOWN
+[11/Apr/2011:13:23:28 +0200] Server.httpServe: BACKEND STOPPED
+[11/Apr/2011:13:23:29 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:16:28:24 +0200] Server.httpServe: SHUTDOWN
+[11/Apr/2011:16:28:24 +0200] Server.httpServe: BACKEND STOPPED
+[11/Apr/2011:16:28:41 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:16:36:04 +0200] Server.httpServe: SHUTDOWN
+[11/Apr/2011:16:36:04 +0200] Server.httpServe: BACKEND STOPPED
+[11/Apr/2011:16:36:04 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:16:37:29 +0200] Server.httpServe: SHUTDOWN
+[11/Apr/2011:16:37:29 +0200] Server.httpServe: BACKEND STOPPED
+[11/Apr/2011:16:37:30 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:16:39:14 +0200] Server.httpServe: SHUTDOWN
+[11/Apr/2011:16:39:14 +0200] Server.httpServe: BACKEND STOPPED
+[11/Apr/2011:16:39:16 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:16:44:57 +0200] Server.httpServe: SHUTDOWN
+[11/Apr/2011:16:44:57 +0200] Server.httpServe: BACKEND STOPPED
+[11/Apr/2011:16:44:57 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:16:45:05 +0200] Server.httpServe: SHUTDOWN
+[11/Apr/2011:16:45:05 +0200] Server.httpServe: BACKEND STOPPED
+[11/Apr/2011:16:45:06 +0200] Server.httpServe: START (EventLoopSimple)
+[11/Apr/2011:16:45:28 +0200] Server.httpServe: SHUTDOWN
+[11/Apr/2011:16:45:28 +0200] Server.httpServe: BACKEND STOPPED
+[11/Apr/2011:16:45:30 +0200] Server.httpServe: START (EventLoopSimple)
