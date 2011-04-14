@@ -28,6 +28,15 @@ import           Text.Templating.Heist
 import           Application
 import           Controller.Paste
 
+
+------------------------------------------------------------------------------
+-- | Render index page
+index :: Application ()
+index = ifTop $ heistLocal (bindSplices indexSplices) $ render "index"
+  where
+    indexSplices =
+          [ ("possible-languages", possibleLanguagesSplice)
+          ]
 ------------------------------------------------------------------------------
 -- | Render recent pastes
 pastes :: Application ()

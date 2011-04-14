@@ -45,7 +45,7 @@ paste t c d l = Paste (RecKey Nothing) t c d l
 
 getRecentPastes :: Application [Paste]
 getRecentPastes = do
-    res <- withDB $ rest =<< (find (select [] "pastes") {sort = ["$natural" =: (-1 :: Int)]})
+    res <- withDB $ rest =<< (find (select [] pastesTable) {sort = ["$natural" =: (-1 :: Int)]})
     return $ either (const []) (fromDocList) res
 
 pasteIDText :: Paste -> Maybe Text
@@ -53,7 +53,7 @@ pasteIDText p = maybe Nothing (Just . T.decodeUtf8 . objid2bs) (unRK $ pasteID p
 
 getPaste :: ObjectId -> Application (Maybe Paste)
 getPaste pid = do
-    res <- withDB $ findOne (select ["_id" =: pid] "pastes")
+    res <- withDB $ findOne (select ["_id" =: pid] pastesTable)
     return $ either (const Nothing) (maybe Nothing fromDoc) res
 
 insertPaste :: Paste -> Application ()

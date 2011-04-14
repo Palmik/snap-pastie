@@ -1,9 +1,9 @@
 <html>
-    <head>
-        <title>Snap web server</title>
-        <link rel="stylesheet" type="text/css" href="screen.css"/>
-    </head>
-    <body>
-
-    </body>
+  <head>
+    <title>Echo Page</title>
+  </head>
+  <body>
+    <a href="/pastes">Recent pastes</a>
+    <apply template="add-paste-form"/>
+  </body>
 </html>
