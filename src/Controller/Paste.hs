@@ -19,7 +19,6 @@ import           Control.Monad (mzero)
 import qualified Data.ByteString.Char8 as BS (unpack)
 
 import           Snap.Types
-import           Text.Digestive.Forms.Snap
 import           Text.Templating.Heist
 
 import           Application

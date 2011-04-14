@@ -33,10 +33,6 @@ Executable pastie
     snap-extension-mongodb >= 0.3.3,
     bson,
     compact-string-fix,
-    digestive-functors,
-    digestive-functors-snap,
-    digestive-functors-blaze,
-    blaze-html > 0.3 && < 0.5,
     transformers,
     mongoDB
 
