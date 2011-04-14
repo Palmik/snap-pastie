@@ -54,7 +54,8 @@ paste = do
 -- | The main entry point handler.
 site :: Application ()
 site = route [ ("/paste/:oid",                    paste)
-             , ("/",          methods [GET, HEAD] pastes)
-             , ("/",          method  POST        addPasteHandler)
+             , ("/pastes",                        pastes)
+             , ("/",          method   POST       addPasteHandler)
+             , ("/",          methods [GET, HEAD] index)
              ]
        <|> serveDirectory "resources/static"

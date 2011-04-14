@@ -1,5 +1,5 @@
 <div class="full-paste">
-    <h3><title/></h3>
+    <a href="/paste/$(paste-id)"><h3><title/></h3></a>
     <pre class="$(language)">
         <code>
 <source-code/>

@@ -11,12 +11,12 @@ module Controller.Paste
     
 import qualified Data.Text    as T
 import           Data.Text (Text)
+import           Data.Maybe
 import qualified Data.Text.Encoding as T (decodeUtf8)
 import qualified Text.XmlHtml as X
 import           Control.Monad.Trans
 import           Control.Monad (mzero)
 import qualified Data.ByteString.Char8 as BS (unpack)
-import           Debug.Trace (trace)
 
 import           Snap.Types
 import           Text.Digestive.Forms.Snap
@@ -41,15 +41,18 @@ pasteParts :: Paste -> [(Text, Text)]
 pasteParts p = map applyAndPack [ ("title", pasteTitle)
                                 , ("source-code", pasteCode)
                                 , ("description", pasteDescription)
-                                , ("language", pasteLanguage) ]
+                                , ("language", pasteLanguage)
+                                , ("paste-id", pasteLink) ]
     where applyAndPack (x, f) = (x, f p)
+          pasteLink p = maybe "#" id $ pasteIDText p
+          
 
 singlePasteSplice :: Maybe ObjectId -> Splice Application
-singlePasteSplice Nothing    = (return . (:[]) . X.TextNode) "404"
+singlePasteSplice Nothing    = textSplice "There is no such paste."
 singlePasteSplice (Just pid) = do
     mp <- lift $ getPaste pid
     case mp of
-         Nothing -> (return . (:[]) . X.TextNode) "404"
+         Nothing -> textSplice "There is no such paste"
          Just  p -> runChildrenWithText $ pasteParts p
     
 

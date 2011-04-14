@@ -30,7 +30,7 @@ Executable pastie
     text >= 0.11 && < 0.12,
     time >= 1.1 && < 1.3,
     xmlhtml == 0.1.*,
-    snap-extension-mongodb,
+    snap-extension-mongodb >= 0.3.3,
     bson,
     compact-string-fix,
     digestive-functors,
