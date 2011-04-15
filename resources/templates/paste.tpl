@@ -1,13 +1,11 @@
-<html>
-  <head>
-    <title>Echo Page</title>
-  </head>
-  <body>
-    <div id="recent-pastes">
+<apply template="default">
+    <bind tag="main-title">Paste</bind>
+
+    <bind tag="main-body">
         <single-paste>
             <apply template="full-paste"/>
         </single-paste>
-    </div>
-    <apply template="add-paste-form"/>
-  </body>
-</html>
+
+        <apply template="add-paste-form"/>
+    </bind>
+</apply>
