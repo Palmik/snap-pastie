@@ -11,10 +11,10 @@ Welcome curious stranger. You have wandered into tutorial which aims to help you
 Access DB here and nowhere else.
 
 ### Controller
-Logic on top of model. Hesit's Splices.
+Logic on top of model. Heist's splices.
 
 ### View
-Heist's Templates.
+Heist's templates.
 
 ## Down to Bussines
 ### Setting up MongoDB Extension
