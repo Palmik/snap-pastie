@@ -3,5 +3,6 @@ Snap-pastie is an implementation of simple code pasting service. It's developed 
 
 ## Why
 It was created for two reasons:
+
 1. To learn (a new technology myself)
 2. To help (others to learn via tutorial)
