@@ -1,12 +1,12 @@
 {-# LANGUAGE FlexibleContexts #-}
 
 module Model.Utils
-( fromDocList
-, insertADT
-, insertADT_
-, insertManyADT
-, insertManyADT_
-) where
+    ( fromDocList
+    , insertADT
+    , insertADT_
+    , insertManyADT
+    , insertManyADT_
+    ) where
 
 import           Control.Monad (liftM)
 import           Data.Maybe

@@ -8,8 +8,8 @@ This is where all the routes and handlers are defined for your site. The
 -}
 
 module Site
-( site
-) where
+    ( site
+    ) where
 
 import           Control.Applicative
 import           Control.Monad
@@ -37,6 +37,8 @@ index = ifTop $ heistLocal (bindSplices indexSplices) $ render "index"
     indexSplices =
           [ ("possible-languages", possibleLanguagesSplice)
           ]
+
+          
 ------------------------------------------------------------------------------
 -- | Render recent pastes
 pastes :: Application ()
@@ -46,6 +48,7 @@ pastes = ifTop $ heistLocal (bindSplices pastesSplices) $ render "pastes"
           [ ("recent-pastes", recentPastesSplice)
           , ("possible-languages", possibleLanguagesSplice)
           ]
+          
 
 ------------------------------------------------------------------------------
 -- | Render single paste
@@ -58,6 +61,7 @@ paste = do
     ifTop $ heistLocal (bindSplices pasteSplices) $ render "paste"
     where
       decodedParam p = fromMaybe "" <$> getParam p
+      
     
 ------------------------------------------------------------------------------
 -- | The main entry point handler.
@@ -68,3 +72,5 @@ site = route [ ("/paste/:oid",                    paste)
              , ("/",          methods [GET, HEAD] index)
              ]
        <|> serveDirectory "resources/static"
+
+       

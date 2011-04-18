@@ -3,11 +3,11 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 
 module Controller.Paste
-( recentPastesSplice
-, singlePasteSplice
-, addPasteHandler
-, possibleLanguagesSplice
-) where
+    ( recentPastesSplice
+    , singlePasteSplice
+    , addPasteHandler
+    , possibleLanguagesSplice
+    ) where
     
 import qualified Data.Text    as T
 import           Data.Text (Text)

@@ -8,9 +8,9 @@ information it requires.
 -}
 
 module Application
-( Application
-, applicationInitializer
-) where
+    ( Application
+    , applicationInitializer
+    ) where
 
 import           Snap.Extension
 import           Snap.Extension.Heist.Impl
