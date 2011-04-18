@@ -21,18 +21,15 @@ import           Snap.Extension.DB.MongoDB
 ------------------------------------------------------------------------------
 -- | 'Application' is our application's monad. It uses 'SnapExtend' from
 -- 'Snap.Extension' to provide us with an extended 'MonadSnap' making use of
--- the Heist and Timer Snap extensions.
+-- the Heist and MongoDB Snap extensions.
 type Application = SnapExtend ApplicationState
 
 
 ------------------------------------------------------------------------------
 -- | 'ApplicationState' is a record which contains the state needed by the Snap
--- extensions we're using.  We're using Heist so we can easily render Heist
--- templates, and Timer simply to illustrate the config loading differences
--- between development and production modes.
+-- extensions we're using.
 data ApplicationState = ApplicationState
     { templateState :: HeistState Application
-    , timerState    :: TimerState
     , databaseState :: MongoDBState
     }
 
@@ -41,12 +38,6 @@ data ApplicationState = ApplicationState
 instance HasHeistState Application ApplicationState where
     getHeistState     = templateState
     setHeistState s a = a { templateState = s }
-
-
-------------------------------------------------------------------------------
-instance HasTimerState ApplicationState where
-    getTimerState     = timerState
-    setTimerState s a = a { timerState = s }
 
 ------------------------------------------------------------------------------
 instance HasMongoDBState ApplicationState where
@@ -62,6 +53,5 @@ instance HasMongoDBState ApplicationState where
 applicationInitializer :: Initializer ApplicationState
 applicationInitializer = do
     heist <- heistInitializer "resources/templates"
-    timer <- timerInitializer
     database <- mongoDBInitializer (Host "127.0.0.1" $ PortNumber 27017) 1 "pastie"
     return $ ApplicationState heist timer database
