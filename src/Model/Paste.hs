@@ -5,7 +5,7 @@
 
 module Model.Paste
     ( Paste(..)
-    , paste
+    , makePaste
     , getRecentPastes
     , getPaste
     , pastesTable
@@ -14,10 +14,6 @@ module Model.Paste
     , ObjectId
     ) where
 
-import           Data.Either
-import           Control.Monad
-import           Control.Monad.IO.Class
-import qualified Data.Text as T
 import qualified Data.Text.Encoding as T (decodeUtf8)
 import           Data.Text (Text)
 
@@ -43,8 +39,8 @@ pastesTable :: Collection
 pastesTable = "pastes"
 
 -- | Smart Paste constructor which takes care of RecKey initialization
-paste :: Text -> Text -> Text -> Text -> Paste
-paste t c d l = Paste (RecKey Nothing) t c d l
+makePaste :: Text -> Text -> Text -> Text -> Paste
+makePaste t c d l = Paste (RecKey Nothing) t c d l
 
 -- | Returns all pastes in descending order by date
 getRecentPastes :: Application [Paste]

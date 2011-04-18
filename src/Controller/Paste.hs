@@ -9,20 +9,15 @@ module Controller.Paste
     , possibleLanguagesSplice
     ) where
     
-import qualified Data.Text    as T
+import qualified Data.Text as T
 import           Data.Text (Text)
-import           Data.Maybe
 import qualified Data.Text.Encoding as T (decodeUtf8)
-import qualified Text.XmlHtml as X
 import           Control.Monad.Trans
-import           Control.Monad (mzero)
-import qualified Data.ByteString.Char8 as BS (unpack)
 
 import           Snap.Types
 import           Text.Templating.Heist
 
-import           Application
-import           Model.Utils      
+import           Application   
 import           Model.Paste
 
 
@@ -37,12 +32,12 @@ possibleLanguagesSplice :: Splice Application
 possibleLanguagesSplice = mapSplices (runChildrenWithText . languageParts) possibleLanguages
 
 pasteParts :: Paste -> [(Text, Text)]
-pasteParts p = map applyAndPack [ ("title", pasteTitle)
-                                , ("source-code", pasteCode)
-                                , ("description", pasteDescription)
-                                , ("language", pasteLanguage)
-                                , ("paste-id", pasteLink) ]
-    where applyAndPack (x, f) = (x, f p)
+pasteParts paste = map applyAndPack [ ("title", pasteTitle)
+                                    , ("source-code", pasteCode)
+                                    , ("description", pasteDescription)
+                                    , ("language", pasteLanguage)
+                                    , ("paste-id", pasteLink) ]
+    where applyAndPack (x, f) = (x, f paste)
           pasteLink p = maybe "#" id $ pasteIDText p
           
 
@@ -66,7 +61,7 @@ addPasteHandler = do
     c <- getParam "source-code" >>= maybe (redirect "/") (return . T.decodeUtf8)
     d <- getParam "description" >>= maybe (redirect "/") (return . T.decodeUtf8)
     l <- getParam "language" >>= maybe (redirect "/") (return . T.decodeUtf8)
-    if (not $ any T.null [t, c, d, l]) then insertPaste $ paste t c d l else return ()
+    if (not $ any T.null [t, c, d, l]) then insertPaste $ makePaste t c d l else return ()
     redirect "/"
 
          

@@ -13,14 +13,10 @@ module Site
 
 import           Control.Applicative
 import           Control.Monad
-import           Debug.Trace
-import           Control.Monad.Trans
 import           Data.Maybe
-import qualified Data.Text.Encoding as T
 
 import           Snap.Extension.DB.MongoDB (bs2objid)
 import           Snap.Extension.Heist
-import           Snap.Extension.Timer
 import           Snap.Util.FileServe
 import           Snap.Types
 import           Text.Templating.Heist

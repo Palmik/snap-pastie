@@ -14,7 +14,6 @@ module Application
 
 import           Snap.Extension
 import           Snap.Extension.Heist.Impl
-import           Snap.Extension.Timer.Impl
 import           Snap.Extension.DB.MongoDB
 
 
@@ -54,4 +53,4 @@ applicationInitializer :: Initializer ApplicationState
 applicationInitializer = do
     heist <- heistInitializer "resources/templates"
     database <- mongoDBInitializer (Host "127.0.0.1" $ PortNumber 27017) 1 "pastie"
-    return $ ApplicationState heist timer database
+    return $ ApplicationState heist database
