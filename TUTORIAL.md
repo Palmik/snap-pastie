@@ -11,6 +11,7 @@ Welcome curious stranger. You have wandered into tutorial which aims to help you
 
 ### Modules
 Apart from the basic and standard modules, you will need these:
+
 * snap
 * snap-core
 * snap-server
@@ -33,20 +34,24 @@ The reason is simple -- it makes your code more modular and thus hopefully easie
 ### Model
 Model should communicate the data (in our case from database) to the controller and handle the data received from controller.
 
-Our model resides in the `src/Model` directory. It's job is:
+Our model resides in the [`src/Model`](src/Model) directory. It's job is:
+
 * to communicate with a database (i.e. writing and reading),
 * to present data in suitable form to the controller.
 
 ### Controller
 **Controller should:**
+
 * contain the logic of the application,
 * perpare a data from the model for the view,
 * serve a data from the view (user input) to the model.
 
 **Controller should not:**
+
 * access a database directly.
 
-Our controller resides in the `src/Controller` directory. It's job is:
+Our controller resides in the [`src/Controller`](src/Controller) directory. It's job is:
+
 * to manipulate the data it got from the model and prepare them to be presented to the user (e.g. retrieve a post),
 * to convert the data it got from users to suitable form for the model (e.g. handle a form).
 
@@ -54,6 +59,7 @@ In Snap & Heist terms, this is the place where we implement most of our splices 
 
 ### View
 Our view resides in the `resources/templates` directory. It's job is:
+
 * to display the data from controller to the user,
 * to provide an input facilities (e.g. a HTML form).
 
