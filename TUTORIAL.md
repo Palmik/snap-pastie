@@ -58,7 +58,7 @@ Our controller resides in the [`src/Controller`](src/Controller) directory. It's
 In Snap & Heist terms, this is the place where we implement most of our splices (ideally all of them).
 
 ### View
-Our view resides in the `resources/templates` directory. It's job is:
+Our view resides in the [`resources/templates`](resources/templates) directory. It's job is:
 
 * to display the data from controller to the user,
 * to provide an input facilities (e.g. a HTML form).
