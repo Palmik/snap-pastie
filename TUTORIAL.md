@@ -29,7 +29,7 @@ You only need a text editor or IDE of your choice, GHC and cabal (I would preson
 In this littel project, we will be abiding the rules of what is usually called the [MVC architecture](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller).
 The reason is simple -- it makes your code more modular and thus hopefully easier to reason about and maintain.
 
-*Disclaimer: These design decision are in no way related to the Snap & Heist itself, you do not have to follow them in your projects.*
+*Disclaimer: These design decisions are in no way related to the Snap & Heist itself, you do not have to follow them in your projects.*
 
 ### Model
 Model should provide API to retrieve and store data (in our case in database).
