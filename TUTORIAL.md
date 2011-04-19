@@ -12,13 +12,13 @@ Welcome curious stranger. You have wandered into tutorial which aims to help you
 ### Modules
 Apart from the basic and standard modules, you will need these:
 
-* snap
-* snap-core
-* snap-server
-* snap-extension-mongodb
-* heist
-* mongoDB
-* bson
+* snap [[github]](https://github.com/snapframework/snap) | [haddock]
+* snap-core [[github]](https://github.com/snapframework/snap-core) | [haddock]
+* snap-server [[github]](https://github.com/snapframework/snap-server) | [haddock]
+* snap-extension-mongodb [[github]](https://github.com/ozataman/snap-extension-mongodb) | [haddock]
+* heist [[github]](https://github.com/snapframework/heist) | [haddock]
+* mongoDB [[github]](https://github.com/TonyGen/mongoDB-haskell) | [haddock]
+* bson [[github]](https://github.com/TonyGen/bson-haskell) | [haddock]
 
 *Take a look at the [`pastie.cabal`](pastie.cabal) for details*
 
