@@ -1,3 +1,5 @@
+## THIS TUTORIAL IS STILL WORK IN PROGRESS
+
 ## Welcome
 Welcome curious stranger. You have wandered into tutorial which aims to help you grasp the Snap and Heist Haskell modules via building a simple dynamic website.
 
@@ -12,13 +14,13 @@ Welcome curious stranger. You have wandered into tutorial which aims to help you
 ### Modules
 Apart from the basic and standard modules, you will need these:
 
-* snap [[github]](https://github.com/snapframework/snap) | [haddock]
-* snap-core [[github]](https://github.com/snapframework/snap-core) | [haddock]
-* snap-server [[github]](https://github.com/snapframework/snap-server) | [haddock]
-* snap-extension-mongodb [[github]](https://github.com/ozataman/snap-extension-mongodb) | [haddock]
-* heist [[github]](https://github.com/snapframework/heist) | [haddock]
-* mongoDB [[github]](https://github.com/TonyGen/mongoDB-haskell) | [haddock]
-* bson [[github]](https://github.com/TonyGen/bson-haskell) | [haddock]
+* snap -- [[github]](https://github.com/snapframework/snap) | [[haddock]](http://snapframework.com/docs/latest/snap/index.html)
+* snap-core -- [[github]](https://github.com/snapframework/snap-core) | [[haddock]](http://snapframework.com/docs/latest/snap-core/index.html)
+* snap-server -- [[github]](https://github.com/snapframework/snap-server) | [[haddock]](http://snapframework.com/docs/latest/snap-server/index.html)
+* snap-extension-mongodb -- [[github]](https://github.com/ozataman/snap-extension-mongodb) | [haddock]
+* heist -- [[github]](https://github.com/snapframework/heist) | [[haddock]](http://snapframework.com/docs/latest/heist/index.html)
+* mongoDB -- [[github]](https://github.com/TonyGen/mongoDB-haskell) | [[haddock]](http://hackage.haskell.org/package/mongoDB)
+* bson -- [[github]](https://github.com/TonyGen/bson-haskell) | [[haddock]](http://hackage.haskell.org/package/bson)
 
 *Take a look at the [`pastie.cabal`](pastie.cabal) for details*
 
