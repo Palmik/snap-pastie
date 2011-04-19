@@ -23,7 +23,7 @@ Apart from the basic and standard modules, you will need these:
 *Take a look at the [`pastie.cabal`](pastie.cabal) for details*
 
 ### Tools
-* 
+You only need a text editor or IDE of your choice, GHC and cabal (I would presonally recommend cabal-dev).
 
 ## Design Decisions
 In this littel project, we will be abiding the rules of what is usually called the [MVC architecture](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller).
