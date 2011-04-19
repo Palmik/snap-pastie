@@ -32,7 +32,7 @@ The reason is simple -- it makes your code more modular and thus hopefully easie
 *Disclaimer: These design decision are in no way related to the Snap & Heist itself, you do not have to follow them in your projects.*
 
 ### Model
-Model should communicate the data (in our case from database) to the controller and handle the data received from controller.
+Model should provide API to retrieve and store data (in our case in database).
 
 Our model resides in the [`src/Model`](src/Model) directory. It's job is:
 
@@ -40,15 +40,7 @@ Our model resides in the [`src/Model`](src/Model) directory. It's job is:
 * to present data in suitable form to the controller.
 
 ### Controller
-**Controller should:**
-
-* contain the logic of the application,
-* perpare a data from the model for the view,
-* serve a data from the view (user input) to the model.
-
-**Controller should not:**
-
-* access a database directly.
+Controller is the place where the application logic resides.
 
 Our controller resides in the [`src/Controller`](src/Controller) directory. It's job is:
 
@@ -58,6 +50,8 @@ Our controller resides in the [`src/Controller`](src/Controller) directory. It's
 In Snap & Heist terms, this is the place where we implement most of our splices (ideally all of them).
 
 ### View
+View is the mediator between application and the user.
+
 Our view resides in the [`resources/templates`](resources/templates) directory. It's job is:
 
 * to display the data from controller to the user,
