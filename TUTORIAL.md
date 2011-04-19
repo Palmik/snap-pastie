@@ -57,7 +57,7 @@ Our view resides in the [`resources/templates`](resources/templates) directory. 
 * to display the data from controller to the user,
 * to provide an input facilities (e.g. a HTML form).
 
-In Snap & Heist terms, the view are the Heist templates where we call the controller's splices.
+In Snap & Heist terms, the view consists of the Heist templates where we call the controller's splices.
 
 ## Down to Bussines
 ### Setting up the MongoDB Extension
