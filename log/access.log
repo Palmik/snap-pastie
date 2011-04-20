@@ -780,3 +780,6 @@
 127.0.0.1 - - [15/Apr/2011:23:01:53 +0200] "GET /paste/4da74031-900faa1d48000000 HTTP/1.1" 200 - "http://0.0.0.0:8000/pastes" "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16"
 127.0.0.1 - - [15/Apr/2011:23:01:53 +0200] "GET /favicon.ico HTTP/1.1" 404 3 - "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16"
 127.0.0.1 - - [15/Apr/2011:23:02:08 +0200] "GET /favicon.ico HTTP/1.1" 404 3 - "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16"
+127.0.0.1 - - [19/Apr/2011:22:12:24 +0200] "GET / HTTP/1.1" 200 - - "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16"
+127.0.0.1 - - [19/Apr/2011:22:12:26 +0200] "GET /pastes HTTP/1.1" 200 - "http://0.0.0.0:8000/" "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16"
+127.0.0.1 - - [19/Apr/2011:22:12:26 +0200] "GET /favicon.ico HTTP/1.1" 404 3 - "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16"

@@ -63,3 +63,31 @@ In Snap & Heist terms, the view consists of the Heist templates where we call th
 
 ## Down to Bussines
 ### Setting up the MongoDB Extension
+
+The Snap.Extension.MongoDB is Snap extension utilizing Snap's extension interface.
+It's installed analogicaly to any other Snap's extension.
+
+In the [Application.hs](src/Application.hs):
+
+First, we import the module:
+
+    import           Snap.Extension.DB.MongoDB
+
+Then we make it part of our Application's state along with Heist:
+
+    data ApplicationState = ApplicationState
+        { templateState :: HeistState Application
+        , databaseState :: MongoDBState
+        }
+
+    instance HasMongoDBState ApplicationState where
+        getMongoDBState     = databaseState
+        setMongoDBState s a = a { databaseState = s }
+
+And finally call the extension's initializer in the application's initializer:
+
+    applicationInitializer :: Initializer ApplicationState
+    applicationInitializer = do
+        heist <- heistInitializer "resources/templates"
+        database <- mongoDBInitializer (Host "127.0.0.1" $ PortNumber 27017) 1 "pastie"
+        return $ ApplicationState heist database

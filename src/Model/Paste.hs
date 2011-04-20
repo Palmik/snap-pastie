@@ -45,8 +45,8 @@ makePaste t c d l = Paste (RecKey Nothing) t c d l
 -- | Returns all pastes in descending order by date
 getRecentPastes :: Application [Paste]
 getRecentPastes = do
-    res <- withDB $ rest =<< (find (select [] pastesTable) {sort = ["$natural" =: (-1 :: Int)]})
-    return $ either (const []) (fromDocList) res
+    res <- withDB $ restADT =<< (find (select [] pastesTable) {sort = ["$natural" =: (-1 :: Int)]})
+    return $ either (const []) id res
 
 -- | Returns Pastes's ObjectId as a Text
 pasteIDText :: Paste -> Maybe Text
