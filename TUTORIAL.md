@@ -62,14 +62,20 @@ Our view resides in the [`resources/templates`](resources/templates) directory. 
 In Snap & Heist terms, the view consists of the Heist templates where we call the controller's splices.
 
 ## Down to Bussines
+### Setting up MongoDB server
+
+### Setting up the Heist Extension
+
+*Working file: [Application.hs](src/Application.hs)*
+
 ### Setting up the MongoDB Extension
+
+*Working file: [Application.hs](src/Application.hs)*
 
 The Snap.Extension.MongoDB is Snap extension utilizing Snap's extension interface.
 It's installed analogicaly to any other Snap's extension.
 
-In the [Application.hs](src/Application.hs):
-
-First, we import the module:
+First, we import the module of the extension:
 
     import           Snap.Extension.DB.MongoDB
 
@@ -91,3 +97,7 @@ And finally call the extension's initializer in the application's initializer:
         heist <- heistInitializer "resources/templates"
         database <- mongoDBInitializer (Host "127.0.0.1" $ PortNumber 27017) 1 "pastie"
         return $ ApplicationState heist database
+
+    database <- mongoDBInitializer (Host "127.0.0.1" $ PortNumber 27017) 1 "pastie"
+
+That line tells the MongoDB extension, that the database server is hosted on `127.0.0.1` and listening on port `27017` (which is the standard one)
