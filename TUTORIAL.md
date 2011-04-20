@@ -71,8 +71,7 @@ It's really easy! Just download [the binary](http://www.mongodb.org/downloads) f
 *Working file: [Application.hs](src/Application.hs)*
 
 One of the strengths of Snap is its modularity and Heist is a proof of that.
-Heist is just an extension, meaning
-<acronym title="if such thing crossed your mind, it probably will not ever again after you learn more about Heist">you could use your own templating engine</acronym>, yet it seamlessly blends with Snap.
+Heist is just an extension, meaning you could use templating engine or your choice (if such thing crossed your mind, it probably will not ever again after you learn more about Heist) or none at all, yet it seamlessly blends with Snap.
 
 ### Setting up the MongoDB Extension
 
