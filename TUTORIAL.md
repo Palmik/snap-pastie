@@ -64,6 +64,8 @@ In Snap & Heist terms, the view consists of the Heist templates where we call th
 ## Down to Bussines
 ### Setting up MongoDB server
 
+It's really easy! Just download [the binary](http://www.mongodb.org/downloads) for your system and fire up the `mongod` daemon, that's it, you are set to go.
+
 ### Setting up the Heist Extension
 
 *Working file: [Application.hs](src/Application.hs)*
