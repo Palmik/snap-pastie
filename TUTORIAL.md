@@ -66,14 +66,18 @@ In Snap & Heist terms, the view consists of the Heist templates where we call th
 
 It's really easy! Just download [the binary](http://www.mongodb.org/downloads) for your system and fire up the `mongod` daemon, that's it, you are set to go.
 
-### Setting up the Heist Extension
+### Installing the Extensions
+
+In this section we will install the extensions we use in snap-pastie.
+
+#### Setting up the Heist Extension
 
 *Working file: [Application.hs](src/Application.hs)*
 
 One of the strengths of Snap is its modularity and Heist is a proof of that.
 Heist is just an extension, meaning you could use templating engine or your choice (if such thing crossed your mind, it probably will not ever again after you learn more about Heist) or none at all, yet it seamlessly blends with Snap.
 
-### Setting up the MongoDB Extension
+#### Setting up the MongoDB Extension
 
 *Working file: [Application.hs](src/Application.hs)*
 
@@ -106,3 +110,6 @@ And finally call the extension's initializer in the application's initializer:
     database <- mongoDBInitializer (Host "127.0.0.1" $ PortNumber 27017) 1 "pastie"
 
 That line tells the MongoDB extension, that the database server is hosted on `127.0.0.1` and listening on port `27017` (which is the standard one)
+
+### Making the Model
+

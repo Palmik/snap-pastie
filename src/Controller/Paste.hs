@@ -41,9 +41,8 @@ pasteParts paste = map applyAndPack [ ("title", pasteTitle)
           pasteLink p = maybe "#" id $ pasteIDText p
           
 
-singlePasteSplice :: Maybe ObjectId -> Splice Application
-singlePasteSplice Nothing    = textSplice "There is no such paste."
-singlePasteSplice (Just pid) = do
+singlePasteSplice :: ObjectId -> Splice Application
+singlePasteSplice pid = do
     mp <- lift $ getPaste pid
     case mp of
          Nothing -> textSplice "There is no such paste"

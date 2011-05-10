@@ -50,14 +50,15 @@ pastes = ifTop $ heistLocal (bindSplices pastesSplices) $ render "pastes"
 -- | Render single paste
 paste :: Application ()
 paste = do
-    oid <- liftM bs2objid $ decodedParam "oid"    
-    let pasteSplices = [ ("single-paste",       singlePasteSplice oid)
-                       , ("possible-languages", possibleLanguagesSplice)
-                       ]
-    ifTop $ heistLocal (bindSplices pasteSplices) $ render "paste"
+    oid <- liftM bs2objid $ decodedParam "oid"
+    maybe pass okPaste oid
     where
       decodedParam p = fromMaybe "" <$> getParam p
-      
+      okPaste oid'   = ifTop $ heistLocal (bindSplices pasteSplices) $ render "paste"
+        where
+          pasteSplices = [ ("single-paste",       singlePasteSplice oid')
+                         , ("possible-languages", possibleLanguagesSplice)
+                         ]
     
 ------------------------------------------------------------------------------
 -- | The main entry point handler.
